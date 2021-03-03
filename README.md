@@ -19,5 +19,6 @@ for home users.
 
 Enjoy limitless file transfers :)!
 
-![Image2](https://cdn.discordapp.com/attachments/533758714805616680/651606553430065227/unknown.png)
+Note the front-end is basically non-existant. This is just a proof of concept.
+
 ![Image1](https://cdn.discordapp.com/attachments/533758714805616680/651606345455501332/unknown.png)
