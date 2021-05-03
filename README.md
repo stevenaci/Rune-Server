@@ -1,10 +1,12 @@
 # Rune-Server
 
 
-<b>Limitless FTP server,</b>
-
+<b> FTP server</b>
 for home users.
-
+Features:
+- Upload and host any file on a home network
+- Unlimited file sizes
+- 
 <h4>SETUP:<h4>
 
 ~ set up is really simple ~~
