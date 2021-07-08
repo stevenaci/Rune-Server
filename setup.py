@@ -5,7 +5,7 @@ setup(
     packages=['noteserver'],
     include_package_data=True,
     install_requires=[
-        'flask',
+        'flask','requests', ''
     ],
     setup_requeres=[
 
