@@ -3,7 +3,6 @@ import pickle
 # Here we can save new users, load user settings and
 # variable paths... such as private folders ..
 
-
 def load_name(name, password):
 
     userdata = pickle.load(open("/SaveData/UserData", "rb"))
@@ -18,7 +17,6 @@ def load_name(name, password):
                 return {"Code": 555, "Response": "password_not_valid"}
         else:
             return {"Code": 555, "Response": "name_not_valid"}  # negative response
-
 
 def save_name(name, password):
 
