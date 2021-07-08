@@ -9,14 +9,8 @@ Features:
 
 <h4>SETUP:<h4>
 
-set up is really simple
-
-1. Navigate to the main repo folder "/Rune-Server" in a terminal
-2. run command "pip install -e ."   To install dependencies from our requirements.txt
-3. run command "cd noteserver"  Enter the source folder
-4. run command "set FLASK_APP=server.py"  configure flask run-time entry point
-5. run command "flask run --host=localhost" set this to your IP address instead for port forwarding
-6. navigate to your ip and default flask port in the browser (ex. "172.16.21.2:5000")
+app.py is the default flask entry point, so we just need
+to run for local testing: flask run --host=localhost
 
 
 Note: the front-end is basically non-existant. This is just a proof of concept.

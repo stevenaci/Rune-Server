@@ -41,7 +41,6 @@ def gather_images(target_dir):
 def display(index):
     return files[index]
 
-
 def isvalidfile(length, filename, ftype):
     ext = filename[length-3:]
 
@@ -55,3 +54,18 @@ def isvalidfile(length, filename, ftype):
     if ftype == "video":
         return True
     return False
+
+def validate_folder(dir):
+    print("\nvalidating folder {}".format(dir))
+    if not os.path.exists(dir):   # if upload folder doesnt exist, create it.
+        print("dir {} doesn't exist, creating it here".format(dir))
+        try:
+            os.makedirs(dir)
+            return True
+        except OSError as e:
+            print(e)
+            print("\ncouldnt create folder")
+            return False
+            
+    print("\nfolder exists")
+    return True

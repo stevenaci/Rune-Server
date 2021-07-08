@@ -1,9 +1,0 @@
-README.md
-setup.py
-noteserver/Log.py
-noteserver/server.py
-noteserver.egg-info/PKG-INFO
-noteserver.egg-info/SOURCES.txt
-noteserver.egg-info/dependency_links.txt
-noteserver.egg-info/requires.txt
-noteserver.egg-info/top_level.txt
