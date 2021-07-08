@@ -1,5 +1,3 @@
-import os
-from utilities import f_storage as fs
 from flask import (Flask, request, session, redirect, url_for, abort, render_template, flash)
 
 from blueprints.fileserver import fs_page

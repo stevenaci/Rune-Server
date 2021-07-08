@@ -2,7 +2,7 @@ from flask import Blueprint, request, session, redirect, url_for, abort, render_
 from jinja2 import TemplateNotFound
 from werkzeug.utils import secure_filename
 from os import getcwd, path
-from utilities import f_storage as fs
+from utilities import file_storage as fs
 
 fs_page = Blueprint('fs_page', __name__,
                         template_folder='templates')
