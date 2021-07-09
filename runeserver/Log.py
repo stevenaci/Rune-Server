@@ -4,19 +4,17 @@ import logging
 
 _LOGGER = None
 LOG_LEVEL = logging.DEBUG
-LOGGER_NAME = "Sirt Device Hub"
+LOGGER_NAME = "Runeserver 1.0"
 
 print("LOG PY TEST DIR: " + os.getcwd())
 print(sys.path[0])
 # creates log dir if it doesn't exist
 if not os.path.exists("./logs"):
     os.mkdir("logs")
-LOGGING_PATH = "logs/SirtDeviceHub_log.txt"
+LOGGING_PATH = "logs/Runeserver.txt"
 # Make a level that will always print
 logging.ALWAYS = 100
 logging.addLevelName(logging.ALWAYS, "ALWAYS")
-
-
 
 def init_logger():
     global _LOGGER
@@ -57,26 +55,20 @@ def FATAL(msg):
 def CRITICAL(msg):
     __log(msg, logging.CRITICAL)
 
-
 def ERROR(msg):
     __log(msg, logging.ERROR)
-
 
 def WARN(msg):
     __log(msg, logging.WARNING)
 
-
 def WARNING(msg):
     __log(msg, logging.WARNING)
-
 
 def INFO(msg):
     __log(msg, logging.INFO)
 
-
 def DEBUG(msg):
     __log(msg, logging.DEBUG)
-
 
 def __log(msg, msg_level):
     global _LOGGER

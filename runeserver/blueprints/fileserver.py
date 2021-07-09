@@ -3,6 +3,7 @@ from jinja2 import TemplateNotFound
 from werkzeug.utils import secure_filename
 from os import getcwd, path
 from utilities import file_storage as fs
+import Log as log
 
 fs_page = Blueprint('fs_page', __name__,
                         template_folder='templates')
@@ -10,8 +11,8 @@ fs_page = Blueprint('fs_page', __name__,
 ALLOWED_UPLOAD_EXTS = set(['txt', 'pdf', 'png', 'jpg', 'gif']) 
 CURRENT_DIR = getcwd()
 UPLOAD_PATH = path.join(getcwd(),"static","uploads")
-print("UPLOAD DIR {}".format(UPLOAD_PATH))
 
+log.__log("UPLOAD DIR {}".format(UPLOAD_PATH), log.logging.DEBUG)
 # GLOBALS 
 uploadedfile = None
 uploadtype = None
