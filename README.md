@@ -13,5 +13,6 @@ Features:
 app.py is the default flask entry point, so we just need
 to run for local testing: flask run --host=localhost
 
-
-![Image1](https://cdn.discordapp.com/attachments/533758714805616680/651606345455501332/unknown.png)
+![upload](./runeserver/screenshots/upload.PNG)
+![uploaded](./runeserver/screenshots/uploaded.PNG)
+![viewer](./runeserver/screenshots/uploadviewer.PNG)

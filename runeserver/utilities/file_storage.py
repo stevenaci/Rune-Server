@@ -2,6 +2,11 @@ import sys
 from glob import glob
 import os
 
+    #returns the static/uploads/fname path from an uploaded file.
+def to_upload_path(fname):
+        base = os.path.basename(fname)
+        return os.path.join("static", "uploads", base) # Should work on Unix and windows
+
 def find_image_files(dir):
     paths = []
     print("globbing: " + dir)
@@ -9,10 +14,8 @@ def find_image_files(dir):
     imgfiles = glob(dir + '\\*.jpg') + glob(dir + '\\*.png') + glob("\\*.bmp") + glob(dir + '\\*.gif')
 
     for img in imgfiles:
-        img = os.path.basename(img)
-        print("globbed: " + img)
-        fullpath = os.path.join("static", "uploads", img) # Should work on Unix and windows
-        paths.append( fullpath)
+        imgpath = to_upload_path(img)
+        paths.append(imgpath)
     
     return paths
 def gather_images(dir): # gather all the images in a directory

@@ -92,8 +92,8 @@ def upload_menu():
 def uploaded_file():
     global uploadedfile
     print("Uploaded file: ", uploadedfile)
-    imgURL= UPLOAD_DIR + uploadedfile
-    return render_template('uploaded.html', image=imgURL)
+    fpath = fs.to_upload_path(uploadedfile)
+    return render_template('uploaded.html', image=fpath)
 
 
 @fs_page.route('/upload_viewer', methods=['GET', 'POST'])

@@ -1,1 +1,11 @@
 2021-07-09 14:09:09,293 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:36:38,763 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:44:13,033 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:45:05,080 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:47:50,002 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:48:05,052 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:48:21,926 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:48:23,433 | Log | DEBUG ||| None
+2021-07-12 15:49:16,461 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:49:17,957 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:49:19,464 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
