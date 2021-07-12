@@ -9,3 +9,4 @@
 2021-07-12 15:49:16,461 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
 2021-07-12 15:49:17,957 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
 2021-07-12 15:49:19,464 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads
+2021-07-12 15:55:01,902 | Log | DEBUG ||| UPLOAD DIR D:\Code\GUI\RuneServer\Rune-Server\runeserver\static\uploads

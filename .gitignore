@@ -1,3 +1,4 @@
 # Don't track content of these folders
 noteserver/static/uploads
 /static/uploads
+/logs/
