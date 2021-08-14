@@ -10,8 +10,10 @@ Features:
 - Unlimited file sizes
 
 <h4>SETUP:<h4>
-app.py is the default flask entry point, so we just need
-to run for local testing: flask run --host=localhost
+  local test:
+  flask run --host=localhost
+  network test:
+  flask run --host=192.168.0.*  (the interface you want to use)
 
 ![upload](./runeserver/screenshots/upload.PNG)
 ![uploaded](./runeserver/screenshots/uploaded.PNG)
