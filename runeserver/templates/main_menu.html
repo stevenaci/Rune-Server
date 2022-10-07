@@ -1,0 +1,38 @@
+{% extends 'layout.html'%}
+
+{% block title %}
+ Main Menu:
+{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to rune server</h1>
+
+
+ <form method=post enctype=multipart/form-data>
+
+<input type=submit name="uo" value="upload_menu">
+<input  type=submit name="uo" value="view_uploads">
+
+ </form>
+
+<script>
+
+</script>
+
+{% endblock %}
+</html>
+
+
+
+<!--
+<form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+<dl>
+<dt>Title:
+<dd><input type=text size=30 name=title>
+<dt>Text:
+<dd><textarea name=text rows=5 cols=40></textarea>
+<dd><input type=submit value=Share>
+</dl>
+</form>
+-->

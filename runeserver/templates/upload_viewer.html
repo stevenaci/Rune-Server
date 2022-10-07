@@ -1,0 +1,40 @@
+{% extends "layout.html"%}
+
+{% block content %}
+<div id="imgs"></div>
+
+{% for image in files %}
+
+    <div class="thumbnail_selector"><img class="thumbnail" src="{{image}}" >
+    
+    <form method=post action="/video_viewer" enctype=multipart/form-data>
+        <input type=submit name="vid_fn" value={{image}}>
+    </form>
+    </div>
+{% endfor %}
+
+{% endblock %}
+{% block footer %}
+<script>
+var option = 'enlarge';
+$(".thumbnail").click(function(){
+
+if (option === 'enlarge'){
+//$.post($(this).attr('src'));
+    if($(this).width === 'auto'){
+        $(this).width('10%');
+    } else {
+        $(this).height('auto');
+        $(this).width('auto');
+    }
+
+//    $.post("viewer.html",{source : $(this).src});
+}
+
+});
+
+</script>
+
+{% endblock %}
+
+</html>

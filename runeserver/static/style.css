@@ -1,0 +1,13 @@
+body {
+color:blue;
+align-items:center;
+}
+
+.thumbnail {
+width:10%;
+height:auto;
+}
+
+.title_banner{
+    height:500px;
+}
