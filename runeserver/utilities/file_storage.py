@@ -1,53 +1,52 @@
-import sys
 from glob import glob
 import os
+from runeserver.utilities.extensions import file_extensions
 
-# returns the static/uploads/fname path from an uploaded file.
-def to_upload_path(fname):
+def get_upload_path(fname):
         base = os.path.basename(fname)
         return os.path.join("static", "uploads", base) # Should work on Unix and windows
 
-# find images in a directory
-def find_image_files(dir):
-    paths = []
-    imgfiles = glob(dir + '\\*.jpg') + glob(dir + '\\*.png') + glob("\\*.bmp") + glob(dir + '\\*.gif')
+def find_files(dir, exts: list[str] = []):
+    """ find files with an extension filter"""
+    return [
+        fn
+        for fn in [
+            glob(dir + f'\\*{ext}')
+        for ext in exts]
+    ]
 
-    for img in imgfiles:
-        imgpath = to_upload_path(img)
-        paths.append(imgpath)
-    
-    return paths
 
 def find_video_files(dir):
-    paths = []
-    vid_files = glob(dir + '\\*.mkv') + glob(dir + '\\*.mp4')
 
-    for vid in vid_files:
-        paths.append(os.path.basename(vid))
+    return [os.path.basename(fn)
+    for fn in find_files(exts=file_extensions.video)
+    ]
     
-    return paths
 
-def gather_images(dir): # gather all the images in a directory
-    print("Gathering images from {}".format(dir))
-    return find_image_files(dir)
+def find_image_files(dir):
+    return [os.path.basename(fn)
+    for fn in find_files(exts=file_extensions.image)
+    ]
 
 def isvalidfile(length, filename, ftype):
     ext = filename[length-3:]
 
-    if (ext == "jpg") or (ext == "gif") or (ext == "bmp") or (ext == "png"):
-        if ftype == "image":
+    if ftype == "image":
+        if ext in file_extensions.image:
+                return True
+
+    if ftype == "text":
+        if ext in file_extensions.text:
             return True
 
-    if (ext == 'txt') or (ext == 'pdf'):
-        if ftype == "text":
-            return True
     if ftype == "video":
-        return True
+        if ext in file_extensions.video:
+            return True
     return False
 
-def validate_folder(dir):
+def touch_folder(dir):
     print("\nvalidating folder {}".format(dir))
-    if not os.path.exists(dir):   # if upload folder doesnt exist, create it.
+    if not os.path.exists(dir):   # if folder doesnt exist, create it.
         print("dir {} doesn't exist, creating it here".format(dir))
         try:
             os.makedirs(dir)

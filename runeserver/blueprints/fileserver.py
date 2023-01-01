@@ -1,5 +1,4 @@
 from flask import Blueprint, request, session, redirect, url_for, abort, render_template, flash
-from jinja2 import TemplateNotFound
 from werkzeug.utils import secure_filename
 from os import getcwd, path
 from utilities import file_storage as fs
@@ -12,8 +11,8 @@ ALLOWED_UPLOAD_EXTS = set(['txt', 'pdf', 'png', 'jpg', 'gif'])
 CURRENT_DIR = getcwd()
 UPLOAD_PATH = path.join(getcwd(),"static","uploads")
 
-log.__log("UPLOAD DIR {}".format(UPLOAD_PATH), log.logging.DEBUG)
-# GLOBALS 
+log.DEBUG("UPLOAD DIR {}".format(UPLOAD_PATH))
+
 uploadedfile = None
 uploadtype = None
 
@@ -22,11 +21,6 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_UPLOAD_EXTS
 
-"""ERROR HANDLER"""
-@fs_page.errorhandler(403)
-def page_not_found(e):
-    # note that we set the 403 status explicitly
-    return render_template('403.html'), 403
 
 """VIEW FUNCTIONS"""
 @fs_page.route('/', methods=['GET', 'POST'])
@@ -63,7 +57,7 @@ def upload():
             # get correct path for type of file
             # 
             if fs.isvalidfile(len(filename), filename, session['utype']):
-                fs.validate_folder( UPLOAD_PATH)
+                fs.touch_folder( UPLOAD_PATH)
 
                 file.save(path.join( UPLOAD_PATH  + filename))
 
@@ -92,21 +86,23 @@ def upload_menu():
 def uploaded_file():
     global uploadedfile
     print("Uploaded file: ", uploadedfile)
-    fpath = fs.to_upload_path(uploadedfile)
+    fpath = fs.get_upload_path(uploadedfile)
     return render_template('uploaded.html', image=fpath)
 
 
 @fs_page.route('/upload_viewer', methods=['GET', 'POST'])
 def upload_viewer():
     if request.method == 'GET':
-        files = fs.gather_images( UPLOAD_PATH)
+        files = fs.find_image_files( UPLOAD_PATH)
         files.extend(fs.find_video_files(UPLOAD_PATH))
         return render_template('upload_viewer.html', user="Guest", files=files)
+
 
 @fs_page.route('/display/<filename>')
 def display_video(filename):
 	print('display_video filename: ' + filename)
 	return redirect(url_for('static', filename='uploads/' + filename), code=301)
+
 
 @fs_page.route('/video_viewer', methods=['POST'])
 def video_viewer():

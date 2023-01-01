@@ -7,7 +7,7 @@ app.config.from_object(__name__)  # load config from this file ()
 
 # load default config and override config from an environment variable
 app.config.update(
-   # DATABASE=os.path.join(app.root_path, 'flaskr.db'),
+   # DATABASE=os.path.join(app.root_path, 'common.db'),
     SECRET_KEY=b'_5#y2L"F4Q8z\n\xec]/',
     USERNAME='ino',
     PASSWORD='fin'

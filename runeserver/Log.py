@@ -2,6 +2,8 @@ import sys
 import os
 import logging
 
+from runeserver.utilities.file_storage import touch_folder
+
 _LOGGER = None
 LOG_LEVEL = logging.DEBUG
 LOGGER_NAME = "Runeserver 1.0"
@@ -9,8 +11,8 @@ LOGGER_NAME = "Runeserver 1.0"
 print("LOG PY TEST DIR: " + os.getcwd())
 print(sys.path[0])
 # creates log dir if it doesn't exist
-if not os.path.exists("./logs"):
-    os.mkdir("logs")
+touch_folder("./logs")
+
 LOGGING_PATH = "logs/Runeserver.txt"
 # Make a level that will always print
 logging.ALWAYS = 100
