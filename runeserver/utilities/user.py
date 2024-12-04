@@ -9,7 +9,6 @@ def load_name(name, password):
     for username, passwd in userdata.items():
         # check username exists
         if username == name:
-
             # check pass is correct
             if passwd == password:
                 return {"Code": 888, "Response": "NULL"}  # positive response

@@ -14,6 +14,7 @@ Features:
 - Host a file server on any device at home
 - Upload  file on a local network
 - Unlimited file sizes
+- Stream movies and backup images at home
 
 <h4>SETUP:<h4>
 Install dependencies and run the launch.json
