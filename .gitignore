@@ -1,6 +1,6 @@
 # Don't track content of these folders
 runeserver/static/uploads
 /static/uploads
-runeserver/logs
+runeserver/logs*
 *cpython-39.pyc
 *__pycache__

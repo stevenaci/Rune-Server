@@ -11,7 +11,8 @@
             "module": "flask",
             "env": {
                 "FLASK_APP": "runeserver/app",
-                "FLASK_ENV": "development"
+                "FLASK_ENV": "development",
+                //"FLASK_RUN_HOST": "0.0.0.0"
             },
             "args":["run"],
             "jinja": true

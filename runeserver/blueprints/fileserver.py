@@ -1,26 +1,16 @@
-from flask import Blueprint, request, session, redirect, url_for, abort, render_template, flash
+from flask import Blueprint, request, session, redirect, url_for, render_template, flash
 from werkzeug.utils import secure_filename
 from os import getcwd, path
+from runeserver.utilities.extensions import allowed_file, file_extensions
 from utilities import file_storage as fs
 import Log as log
 
-fs_page = Blueprint('fs_page', __name__,
-                        template_folder='templates')
+fs_page = Blueprint('fs_page', __name__, template_folder='templates')
 
-ALLOWED_UPLOAD_EXTS = set(['txt', 'pdf', 'png', 'jpg', 'gif']) 
 CURRENT_DIR = getcwd()
-UPLOAD_PATH = path.join(getcwd(),"static","uploads")
+UPLOAD_PATH = path.join(CURRENT_DIR,"runeserver/static/uploads")
 
 log.DEBUG("UPLOAD DIR {}".format(UPLOAD_PATH))
-
-uploadedfile = None
-uploadtype = None
-
-# validate file
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_UPLOAD_EXTS
-
 
 """VIEW FUNCTIONS"""
 @fs_page.route('/', methods=['GET', 'POST'])
@@ -39,7 +29,6 @@ def main_menu():
 
 @fs_page.route('/upload', methods=['GET', 'POST'])
 def upload():
-    global uploadedfile
     error = ""
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -55,39 +44,31 @@ def upload():
             filename = secure_filename(file.filename)
             filename = "/" + filename
             # get correct path for type of file
-            # 
-            if fs.isvalidfile(len(filename), filename, session['utype']):
+            if fs.is_valid_file(filename, session['utype']):
                 fs.touch_folder( UPLOAD_PATH)
-
                 file.save(path.join( UPLOAD_PATH  + filename))
-
-                uploadedfile = filename
                 # thank you screen
-                return redirect(url_for('fs_page.uploaded_file'))
+                return redirect(url_for('fs_page.uploaded_file', uploaded_file = filename))
             else:
                 print(session['utype'])
                 error = "invalid file type"
-                # upload_menu()
 
     return render_template('upload.html', error=error)
 
 @fs_page.route('/upload_menu', methods=['GET', 'POST'])
 def upload_menu():
     if request.method == 'POST':
-
         session['utype'] = request.form['utype']
-
         return redirect(url_for('fs_page.upload'))
 
     return render_template('uploadmenu.html')
 
 # thank you screen
 @fs_page.route('/uploaded')
-def uploaded_file():
-    global uploadedfile
-    print("Uploaded file: ", uploadedfile)
-    fpath = fs.get_upload_path(uploadedfile)
-    return render_template('uploaded.html', image=fpath)
+def uploaded_file(uploaded_file: str):
+    print("Uploaded file: ", uploaded_file)
+    fpath = fs.get_upload_path(uploaded_file)
+    return render_template('uploaded.html')
 
 
 @fs_page.route('/upload_viewer', methods=['GET', 'POST'])
@@ -106,27 +87,8 @@ def display_video(filename):
 
 @fs_page.route('/video_viewer', methods=['POST'])
 def video_viewer():
-    return render_template('video_viewer.html', filename=request.form['vid_fn'])
-
-###################################### # log in form # #################################################################
-
-# fs_page.route('/login', methods=['GET', 'POST'])
-# def login():
-#     error = None
-#     if request.method == 'POST':
-#         if request.form['username'] != app.config['USERNAME']:
-#             error = 'Invalid username'
-#         elif request.form['password'] != app.config['PASSWORD']:
-#             error = 'Invalid password'
-#         else:
-#             session['logged_in'] = True
-#             flash('You were logged in')
-#             return redirect(url_for('main_menu'))
-#     return render_template('login.html', error=error)
-
-
-# @fs_page.route('/logout')
-# def logout():
-#     session.pop('logged_in', None)
-#     flash('You were logged out')
-#     return redirect(url_for('upload_viewer'))
+    return render_template(
+        'video_viewer.html',
+        filename=request.form['vid_fn'],
+        enctype=file_extensions.video_html_encodings.get(fs.get_ext(request.form['vid_fn']))
+    )

@@ -25,7 +25,10 @@
   <tr>
     <div id="footer">
       {% block footer %}
-      &copy; 2019 P$
+      &copy;
+      <a href="{{url_for('fs_page.upload_menu')}}">
+        Home
+      </a>
       {% endblock %}
       </div>
   </tr> 

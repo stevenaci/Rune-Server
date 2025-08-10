@@ -8,37 +8,31 @@ def get_upload_path(fname):
 
 def find_files(dir, exts: list[str] = []):
     """ find files with an extension filter"""
-    return [
-        fn
-        for fn in [
-            glob(dir + f'\\*{ext}')
-        for ext in exts]
-    ]
-
+    files = []
+    for ext in exts:
+         files += glob(dir + f'\\*.{ext}')
+    return files
 
 def find_video_files(dir):
 
     return [os.path.basename(fn)
-    for fn in find_files(exts=file_extensions.video)
+        for fn in find_files(dir, exts=file_extensions.video)
     ]
     
-
 def find_image_files(dir):
-    return [os.path.basename(fn)
-    for fn in find_files(exts=file_extensions.image)
-    ]
+    return [os.path.basename(fn) for fn in find_files(dir, exts=file_extensions.image)]
 
-def isvalidfile(length, filename, ftype):
-    ext = filename[length-3:]
+def get_ext(fn): return fn.split('.')[-1]
+
+def is_valid_file(filename, ftype):
+    ext = get_ext(filename)
 
     if ftype == "image":
         if ext in file_extensions.image:
                 return True
-
     if ftype == "text":
         if ext in file_extensions.text:
             return True
-
     if ftype == "video":
         if ext in file_extensions.video:
             return True
@@ -53,8 +47,8 @@ def touch_folder(dir):
             return True
         except OSError as e:
             print(e)
-            print("\ncouldnt create folder")
+            print("\nCouldnt create folder")
             return False
             
-    print("\nfolder exists")
+    print("\nFolder exists")
     return True
