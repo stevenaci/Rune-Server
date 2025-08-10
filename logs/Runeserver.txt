@@ -1,2 +1,1 @@
-2022-10-14 09:30:32,339 | Log | DEBUG ||| UPLOAD DIR D:\Files\Engineering\Code\Rune-Server\static\uploads
-2022-10-14 09:30:33,208 | Log | DEBUG ||| UPLOAD DIR D:\Files\Engineering\Code\Rune-Server\static\uploads
+
